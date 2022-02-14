@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace IskolaGui
 {
@@ -19,7 +20,8 @@ namespace IskolaGui
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            File.ReadAllLines("nevek.txt").ToList()
+                .ForEach(sor => listBox1.Items.Add(sor));
         }
     }
 }
