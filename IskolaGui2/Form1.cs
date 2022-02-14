@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace IskolaGui2
 {
     public partial class Form1 : Form
     {
+        List<Tanulo> tanulok = new List<Tanulo>();
+        BindingSource bs;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,9 +26,21 @@ namespace IskolaGui2
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnKilépés_Click(object sender, EventArgs e)
         {
+            Close();
+        }
 
+        private void btnBetöltés_Click(object sender, EventArgs e)
+        {
+            foreach (var sor in File.ReadAllLines("nevek.txt"))
+            {
+                tanulok.Add(new Tanulo(sor));
+            }
+            bs = new BindingSource();
+            bs.DataSource = tanulok;
+            listBox1.DataSource = bs;
+            listBox1.DisplayMember = "Név";
         }
     }
 }
