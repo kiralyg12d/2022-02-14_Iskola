@@ -45,8 +45,16 @@ namespace IskolaGui2
 
         private void btnTörlés_Click(object sender, EventArgs e)
         {
-            tanulok.RemoveAt(listBox1.SelectedIndex);
-            bs.ResetBindings(false);
+            if (listBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Nem jelöltek semmit.");
+
+            }
+            else
+            {
+                tanulok.RemoveAt(listBox1.SelectedIndex);
+                bs.ResetBindings(false);
+            }
         }
     }
 }
