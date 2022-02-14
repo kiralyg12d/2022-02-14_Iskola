@@ -71,6 +71,7 @@ namespace IskolaGui2
             this.btnTörlés.TabIndex = 3;
             this.btnTörlés.Text = "Törlés";
             this.btnTörlés.UseVisualStyleBackColor = true;
+            this.btnTörlés.Click += new System.EventHandler(this.btnTörlés_Click);
             // 
             // btnKilépés
             // 

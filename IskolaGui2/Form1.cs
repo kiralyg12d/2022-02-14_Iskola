@@ -42,5 +42,11 @@ namespace IskolaGui2
             listBox1.DataSource = bs;
             listBox1.DisplayMember = "Név";
         }
+
+        private void btnTörlés_Click(object sender, EventArgs e)
+        {
+            tanulok.RemoveAt(listBox1.SelectedIndex);
+            bs.ResetBindings(false);
+        }
     }
 }
