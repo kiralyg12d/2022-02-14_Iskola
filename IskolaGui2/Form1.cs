@@ -40,7 +40,7 @@ namespace IskolaGui2
             bs = new BindingSource();
             bs.DataSource = tanulok;
             listBox1.DataSource = bs;
-            listBox1.DisplayMember = "Név";
+            listBox1.DisplayMember = "nev";
         }
 
         private void btnTörlés_Click(object sender, EventArgs e)
@@ -54,6 +54,22 @@ namespace IskolaGui2
             {
                 tanulok.RemoveAt(listBox1.SelectedIndex);
                 bs.ResetBindings(false);
+            }
+        }
+
+        private void btnMentés_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StreamWriter sw = new StreamWriter("nevek.txt");
+                sw.WriteLine(tanulok[listBox1.SelectedIndex].ToString());
+                sw.Close();
+                MessageBox.Show($"Sikeres mentés!");
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show($"Hiba a mentés során:\n{error.Message}");
             }
         }
     }
